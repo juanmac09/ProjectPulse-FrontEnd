@@ -76,27 +76,48 @@
 }
 
 /* Estilos para el modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
+.modal {
+  display: none; /* Escondido por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1; /* En la parte superior */
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  overflow: auto; /* Scroll si es necesario */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+  backdrop-filter: blur(5px); /* Filtro de desenfoque */
+  transition: opacity 0.3s ease-in-out; /* Transición suave */
+  opacity: 0; /* Inicio con opacidad cero */
 }
 
-.modal-container {
+.modal.show {
+  display: block; /* Mostrar el modal cuando se añade la clase */
+  opacity: 1; /* Transición a opacidad completa */
+}
+
+/* Estilo para el contenido del modal */
+.modal-content {
   background-color: #fff;
+  margin: 10% auto; /* Centrado en la pantalla */
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  max-width: 600px;
-  width: 100%;
-  margin-top: -5%;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  width: 50%; /* Ajusta el tamaño del modal */
+  max-width: 600px; /* Tamaño máximo */
+  animation: slide-down 0.3s ease-out; /* Animación de deslizamiento */
+}
+
+/* Animación de deslizamiento hacia abajo */
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px); /* Inicia ligeramente arriba */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0); /* Se desliza a su posición original */
+    opacity: 1;
+  }
 }
 
 .modal-close {
@@ -123,9 +144,9 @@
     max-width: 100%;
   }
 
-  .modal-container {
-    margin-top: 0;
-    max-width: 90%;
+  .modal-content {
+    width: 90%;
     padding: 15px;
+    margin-top: 20%;
   }
 }

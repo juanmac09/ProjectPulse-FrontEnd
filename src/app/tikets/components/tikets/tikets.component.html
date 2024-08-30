@@ -1,36 +1,54 @@
 <div class="tickets-container">
-    <h2>Historial de Tickets</h2>
-    <div class="tickets-list">
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <h3 class="ticket-title">Título del Ticket 1</h3>
-          <span class="ticket-status status-active">Activo</span>
-        </div>
-        <p class="ticket-description">Descripción breve del ticket 1.</p>
-        <div class="ticket-footer">
-          <button class="view-details-btn">Ver Detalles</button>
-        </div>
-      </div>
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <h3 class="ticket-title">Título del Ticket 2</h3>
-          <span class="ticket-status status-in-progress">En Proceso</span>
-        </div>
-        <p class="ticket-description">Descripción breve del ticket 2.</p>
-        <div class="ticket-footer">
-          <button class="view-details-btn">Ver Detalles</button>
-        </div>
-      </div>
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <h3 class="ticket-title">Título del Ticket 3</h3>
-          <span class="ticket-status status-completed">Finalizado</span>
-        </div>
-        <p class="ticket-description">Descripción breve del ticket 3.</p>
-        <div class="ticket-footer">
-          <button class="view-details-btn">Ver Detalles</button>
-        </div>
-      </div>
-    </div>
+  <h2>Historial de Tickets</h2>
+  <div class="button-container">
+    <button class="create-ticket-btn" (click)="openCreateTicketModal()">
+      <span class="icon">+</span>
+      Crear Ticket
+    </button>
   </div>
   
+  <div class="tickets-list">
+    @for (ticket of tickets; track $index) {
+    <div>
+      <div class="ticket-header">
+        <h3 class="ticket-title">{{ ticket.title }}</h3>
+        <span
+          [ngClass]="{
+            'status-active': ticket.status === 'Activo',
+            'status-in-progress': ticket.status === 'En Proceso',
+            'status-completed': ticket.status === 'Finalizado'
+          }"
+          class="ticket-status"
+        >
+          {{ ticket.status }}
+        </span>
+      </div>
+      <p class="ticket-description">{{ ticket.description }}</p>
+      <div class="ticket-footer">
+        <button
+          class="view-details-btn"
+          (click)="openTicketDetailsModal(ticket)"
+        >
+          Ver Detalles
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+<!-- Modal para ver detalles del ticket -->
+<div class="modal" [class.show]="isTicketDetailsModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeTicketDetailsModal()">&times;</span>
+    <app-details-ticket [ticket]="selectedTicket"></app-details-ticket>
+  </div>
+</div>
+
+<!-- Modal para crear un nuevo ticket -->
+<div class="modal" [class.show]="isCreateTicketModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeCreateTicketModal()">&times;</span>
+    <app-create-tikets></app-create-tikets>
+  </div>
+</div>

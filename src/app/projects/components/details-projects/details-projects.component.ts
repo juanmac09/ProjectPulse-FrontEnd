@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { UpdateProjectsComponent } from "../update-projects/update-projects.component";
 import { CreateUserStoriesComponent } from "../../../user-stories/components/create-user-stories/create-user-stories.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-details-projects',
   standalone: true,
-  imports: [UpdateProjectsComponent, CreateUserStoriesComponent],
+  imports: [UpdateProjectsComponent, CreateUserStoriesComponent,RouterLink],
   templateUrl: './details-projects.component.html',
   styleUrls: ['./details-projects.component.css'],
 })

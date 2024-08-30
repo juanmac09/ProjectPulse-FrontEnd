@@ -7,5 +7,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'projects', component: DashboardComponent },
+  { path: 'userstory', component: DashboardComponent },
+  { path: 'ticket', component: DashboardComponent },
+  { path: 'details-projects', component: DashboardComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

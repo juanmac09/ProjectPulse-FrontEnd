@@ -98,3 +98,104 @@
 .view-details-btn:hover {
   background-color: #0056b3;
 }
+
+/* Estilo para el fondo del modal */
+.modal {
+  display: none; /* Escondido por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1; /* En la parte superior */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  overflow: auto; /* Scroll si es necesario */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+  backdrop-filter: blur(5px); /* Filtro de desenfoque */
+  transition: opacity 0.3s ease-in-out; /* Transición suave */
+  opacity: 0; /* Inicio con opacidad cero */
+}
+
+.modal.show {
+  display: block; /* Mostrar el modal cuando se añade la clase */
+  opacity: 1; /* Transición a opacidad completa */
+}
+
+/* Estilo para el contenido del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto; /* Centrado en la pantalla */
+  padding: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  width: 50%; /* Ajusta el tamaño del modal */
+  max-width: 600px; /* Tamaño máximo */
+  animation: slide-down 0.3s ease-out; /* Animación de deslizamiento */
+}
+
+/* Animación de deslizamiento hacia abajo */
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px); /* Inicia ligeramente arriba */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0); /* Se desliza a su posición original */
+    opacity: 1;
+  }
+}
+
+/* Estilo para el botón de cierre */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: -10px;
+  margin-top: -10px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Contenedor del botón de crear ticket */
+.button-container {
+  text-align: right;
+  margin-bottom: 20px; /* Separación del borde inferior */
+}
+
+/* Botón de crear ticket */
+.create-ticket-btn {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px; /* Ajusta el tamaño del botón */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  font-weight: bold;
+  border-radius: 4px; /* Bordes redondeados más pequeños */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Espaciado entre el ícono y el texto */
+}
+
+.create-ticket-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-ticket-btn:focus {
+  outline: none;
+}
+
+.create-ticket-btn .icon {
+  font-size: 18px; /* Tamaño del ícono más pequeño */
+}
+
+
+

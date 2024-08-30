@@ -1,0 +1,120 @@
+/* Contenedor principal de detalles del ticket */
+.ticket-details-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Encabezado del ticket */
+  .ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ticket-header h2 {
+    font-size: 24px;
+    color: #343a40;
+  }
+  
+  .close-btn {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Contenido del ticket */
+  .ticket-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Información del ticket */
+  .ticket-info {
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 20px;
+  }
+  
+  .ticket-info h3 {
+    font-size: 20px;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-info p {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 10px;
+  }
+  
+  /* Comentarios del ticket */
+  .ticket-comments {
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 20px;
+  }
+  
+  .ticket-comments h3 {
+    font-size: 20px;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+  
+  .comment {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .comment p {
+    margin: 0;
+  }
+  
+  .comment-date {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  /* Acciones del ticket */
+  .ticket-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  

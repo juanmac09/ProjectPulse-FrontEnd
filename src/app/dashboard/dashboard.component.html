@@ -1,6 +1,19 @@
 <div class="dashboard-layout">
   <app-navbar></app-navbar>
   <div class="dashboard-content">
-    <app-details-projects></app-details-projects>
+
+    @if (currentRoute == 'projects') {
+      <app-projects></app-projects>
+    }
+    @else if (currentRoute == 'userstory') {
+      <app-user-stories></app-user-stories>
+    }
+    @else if (currentRoute == 'ticket') {
+      <app-tikets></app-tikets>
+    }
+    @else if (currentRoute == 'details-projects') {
+      <app-details-projects></app-details-projects>
+    }
+    
   </div>
 </div>
