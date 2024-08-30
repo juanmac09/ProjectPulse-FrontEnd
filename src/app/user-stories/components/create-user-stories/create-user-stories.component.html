@@ -1,0 +1,40 @@
+<div class="user-story-form-container">
+  <h2>Crear Nueva Historia de Usuario</h2>
+  <form class="user-story-form">
+    <div class="form-group">
+      <label for="story-title">Título</label>
+      <input
+        type="text"
+        id="story-title"
+        name="title"
+        placeholder="Título de la historia de usuario"
+        required
+      />
+      <span class="error-message">Este campo es obligatorio.</span>
+    </div>
+    <div class="form-group">
+      <label for="story-description">Descripción</label>
+      <textarea
+        id="story-description"
+        name="description"
+        placeholder="Descripción de la historia de usuario"
+        rows="4"
+        required
+      ></textarea>
+      <span class="error-message">Este campo es obligatorio.</span>
+    </div>
+    <div class="form-group">
+      <label for="story-project">Proyecto Asociado</label>
+      <select id="story-project" name="project" required>
+        <option value="" disabled selected>Selecciona un proyecto</option>
+        <!-- Aquí puedes llenar con proyectos disponibles -->
+        <option value="project1">Proyecto 1</option>
+        <option value="project2">Proyecto 2</option>
+      </select>
+      <span class="error-message">Debes seleccionar un proyecto.</span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="submit-btn">Guardar Historia</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+/* Contenedor principal de historias de usuario */
+.user-stories-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Encabezado de historias de usuario */
+  .user-stories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-stories-header h2 {
+    font-size: 24px;
+    color: #343a40;
+  }
+  
+  /* Botón para crear nueva historia de usuario */
+  .create-story-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-story-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Lista de historias de usuario */
+  .user-stories-list {
+    display: grid;
+    gap: 20px;
+  }
+  
+  /* Tarjeta de historia de usuario */
+  .user-story-card {
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-story-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #343a40;
+  }
+  
+  .user-story-card p {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 15px;
+  }
+  
+  /* Acciones de la tarjeta */
+  .user-story-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-story-btn, .delete-story-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-story-btn:hover {
+    background-color: #218838;
+  }
+  
+  .delete-story-btn {
+    background-color: #dc3545;
+  }
+  
+  .delete-story-btn:hover {
+    background-color: #c82333;
+  }
+  

@@ -1,0 +1,42 @@
+<div class="create-project-container">
+  <h2>Crear Proyecto</h2>
+  <form class="create-project-form">
+    <div class="form-group">
+      <label for="projectName">Nombre del Proyecto</label>
+      <input
+        type="text"
+        id="projectName"
+        name="projectName"
+        placeholder="Nombre del proyecto"
+        required
+        
+      />
+      <span class="error-message">Este campo es obligatorio</span>
+    </div>
+    <div class="form-group">
+      <label for="projectDescription">Descripción</label>
+      <textarea
+        id="projectDescription"
+        name="projectDescription"
+        placeholder="Descripción del proyecto"
+        rows="4"
+        required
+        
+      ></textarea>
+      <span class="error-message">Este campo es obligatorio</span>
+    </div>
+    <div class="form-group">
+      <label for="startDate">Fecha de Inicio</label>
+      <input type="date" id="startDate" name="startDate" required   />
+      <span class="error-message">Este campo es obligatorio</span>
+    </div>
+    <div class="form-group">
+      <label for="endDate">Fecha de Fin</label>
+      <input type="date" id="endDate" name="endDate" required   />
+      <span class="error-message">Este campo es obligatorio</span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn-submit">Crear Proyecto</button>
+    </div>
+  </form>
+</div>

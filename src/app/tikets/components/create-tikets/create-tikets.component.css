@@ -1,0 +1,94 @@
+/* Contenedor del formulario de tickets */
+.ticket-form-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título del formulario */
+  .ticket-form-container h2 {
+    font-size: 24px;
+    color: #343a40;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo del formulario */
+  .ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Estilo de los grupos de formulario */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Etiquetas de formulario */
+  .form-group label {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 5px;
+  }
+  
+  /* Campos de entrada de formulario */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 5px;
+  }
+  
+  /* Estado de enfoque */
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Mensajes de error */
+  .error-message {
+    color: #dc3545;
+    font-size: 14px;
+    display: none; /* Oculto por defecto, se mostrará solo cuando haya un error */
+  }
+  
+  /* Botones del formulario */
+  .form-group .submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-group .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-group .cancel-btn {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-group .cancel-btn:hover {
+    background-color: #5a6268;
+  }
+  

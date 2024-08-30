@@ -1,0 +1,28 @@
+<div class="projects-container">
+  <header class="projects-header">
+    <h2>Proyectos</h2>
+    <button class="btn-add-project" (click)="openModal()">
+      Agregar Proyecto
+    </button>
+  </header>
+
+  <section class="projects-list">
+    @for (project of projects; track $index) {
+    <div class="project-card">
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.description }}</p>
+      <a class="btn-view-details">Ver detalles</a>
+    </div>
+    }
+  </section>
+
+  <!-- Modal -->
+  @if (isModalOpen) {
+  <div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeModal()">×</button>
+      <app-create-projects></app-create-projects>
+    </div>
+  </div>
+  }
+</div>

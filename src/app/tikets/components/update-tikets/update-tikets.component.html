@@ -1,0 +1,51 @@
+<div class="ticket-update-form-container">
+    <h2>Actualizar Ticket</h2>
+    <form class="ticket-update-form">
+      <div class="form-group">
+        <label for="ticket-title">Título</label>
+        <input
+          type="text"
+          id="ticket-title"
+          name="title"
+          placeholder="Título del ticket"
+          required
+        />
+        <span class="error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="form-group">
+        <label for="ticket-description">Descripción</label>
+        <textarea
+          id="ticket-description"
+          name="description"
+          placeholder="Descripción del ticket"
+          rows="4"
+          required
+        ></textarea>
+        <span class="error-message">Este campo es obligatorio.</span>
+      </div>
+      <div class="form-group">
+        <label for="ticket-status">Estado</label>
+        <select id="ticket-status" name="status" required>
+          <option value="" disabled selected>Selecciona un estado</option>
+          <option value="active">Activo</option>
+          <option value="in-progress">En Proceso</option>
+          <option value="completed">Finalizado</option>
+        </select>
+        <span class="error-message">Debes seleccionar un estado.</span>
+      </div>
+      <div class="form-group">
+        <label for="ticket-comments">Comentarios</label>
+        <textarea
+          id="ticket-comments"
+          name="comments"
+          placeholder="Comentarios adicionales (opcional)"
+          rows="4"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-btn">Actualizar Ticket</button>
+        <button type="button" class="cancel-btn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

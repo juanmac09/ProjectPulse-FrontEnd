@@ -1,0 +1,32 @@
+<div class="view-project-container">
+  <h2>Detalles del Proyecto</h2>
+  <div class="project-details">
+    <p><strong>Nombre del Proyecto:</strong> Proyecto X</p>
+    <p><strong>Descripción:</strong> Descripción detallada del Proyecto X.</p>
+    <p><strong>Fecha de Inicio:</strong> 12/10/2024</p>
+    <p><strong>Fecha de Fin:</strong> 12/10/2024</p>
+  </div>
+  <div class="action-buttons">
+    <button class="btn-view-stories">Ver Historias de Usuario</button>
+    <button class="btn-create-story" (click)="openCreateStoryModal()">Crear Nueva Historia</button>
+    <button class="btn-update-project" (click)="openModal()">Actualizar Proyecto</button>
+  </div>
+</div>
+
+
+<!-- Modal de Actualización de Proyecto -->
+<div class="modal" [class.show]="isModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <app-update-projects></app-update-projects>
+  </div>
+</div>
+
+<!-- Modal de Crear Nueva Historia de Usuario -->
+<div class="modal" [class.show]="isCreateStoryModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeCreateStoryModal()">&times;</span>
+    <app-create-user-stories></app-create-user-stories>
+  </div>
+</div>
+

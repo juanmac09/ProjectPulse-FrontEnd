@@ -1,0 +1,9 @@
+    .dashboard-layout {
+    display: flex;
+    }
+
+    .dashboard-content {
+    margin-left: 250px; /* Ancho del navbar */
+    padding: 30px;
+    width: 100%;
+    }
