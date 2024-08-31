@@ -12,6 +12,8 @@
           type="email"
           placeholder="Correo electrónico"
           class="form-control"
+          [(ngModel)]="credentials.email"
+          name="email"
         />
         <div class="error-message">Correo electrónico requerido</div>
         <div class="error-message">Correo electrónico inválido</div>
@@ -24,6 +26,8 @@
           type="password"
           placeholder="Contraseña"
           class="form-control"
+          [(ngModel)]="credentials.password"
+          name="password"
         />
         <div class="error-message">Contraseña requerida</div>
         <div class="error-message">
@@ -31,7 +35,7 @@
         </div>
       </div>
 
-      <button type="submit">Iniciar Sesión</button>
+      <button (click)="login()" type="submit">Iniciar Sesión</button>
 
       <div class="links">
         <a href="#">¿Olvidaste tu contraseña?</a>
