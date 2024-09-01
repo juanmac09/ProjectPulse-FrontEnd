@@ -17,12 +17,18 @@
 
 
 <!-- Modal de Actualización de Proyecto -->
-<div class="modal" [class.show]="isModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <app-update-projects></app-update-projects>
+ 
+@if (project) {
+  <div class="modal" [class.show]="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <app-update-projects [project]="project"
+      (projectUpdate)="handleProjectUpdate($event)"
+        (errorOccurred)="handleError($event)"></app-update-projects>
+    </div>
   </div>
-</div>
+}
+
 
 <!-- Modal de Crear Nueva Historia de Usuario -->
 <div class="modal" [class.show]="isCreateStoryModalOpen">
@@ -31,4 +37,9 @@
     <app-create-user-stories></app-create-user-stories>
   </div>
 </div>
+
+@if(statusMessage && successMessage){
+  <app-status-message [message]="statusMessage" [isSuccess]="successMessage"></app-status-message>
+}
+
 

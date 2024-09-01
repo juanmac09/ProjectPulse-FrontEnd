@@ -46,21 +46,7 @@
   border-color: #dc3545; /* Rojo */
 }
 
-/* Estilo aplicado a los mensajes de error visibles */
-.form-group.has-error .error-message {
-  color: #dc3545; /* Rojo */
-  font-size: 14px;
-  display: block; /* Mostrar mensaje */
-  margin-top: 5px;
-}
 
-/* Ocultar mensajes de error por defecto */
-.error-message {
-  color: #dc3545; /* Rojo */
-  font-size: 14px;
-  display: none; /* Oculto por defecto */
-  margin-top: 5px;
-}
 
 /* Estilo del botón de envío */
 .btn-submit {
@@ -97,3 +83,20 @@
     font-size: 14px;
   }
 }
+
+/* Ocultar mensajes de error por defecto */
+.error-message {
+  color: #dc3545; /* Rojo */
+  font-size: 14px;
+  display: none; /* Oculto por defecto */
+  margin-top: 5px;
+}
+
+/* Estilo aplicado a los mensajes de error visibles */
+.form-group.has-error .error-message {
+  color: #dc3545; /* Rojo */
+  font-size: 14px;
+  display: block; /* Mostrar mensaje */
+  margin-top: 5px;
+}
+

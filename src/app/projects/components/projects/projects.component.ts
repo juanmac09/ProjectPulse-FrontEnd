@@ -3,20 +3,9 @@ import { CreateProjectsComponent } from '../create-projects/create-projects.comp
 import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../services/project/project.service';
 import { FormsModule } from '@angular/forms';
+import { Project } from '../../interfaces/project';
 
 
-/**
- * Interface representing the structure of a project.
- */
-interface Project {
-  id: number;
-  name: string;
-  description: string;
-  generalCompany: {
-    id: number;
-    name: string;
-  };
-}
 
 @Component({
   selector: 'app-projects',

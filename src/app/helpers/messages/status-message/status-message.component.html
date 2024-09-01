@@ -1,0 +1,9 @@
+<!-- status-message.component.html -->
+@if (message) {
+  <div class="status-message-container">
+    <div [ngClass]="{ 'success-message': isSuccess, 'error-message': !isSuccess }">
+      <span class="message-icon" [ngClass]="{ 'success-icon': isSuccess, 'error-icon': !isSuccess }"></span>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+}

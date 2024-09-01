@@ -3,21 +3,18 @@ import { UpdateProjectsComponent } from '../update-projects/update-projects.comp
 import { CreateUserStoriesComponent } from '../../../user-stories/components/create-user-stories/create-user-stories.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProjectService } from '../../services/project/project.service';
-
-interface Project {
-  id: number;
-  name: string;
-  description: string;
-  generalCompany: {
-    id: number;
-    name: string;
-  };
-}
+import { Project } from '../../interfaces/project';
+import { StatusMessageComponent } from '../../../helpers/messages/status-message/status-message.component';
 
 @Component({
   selector: 'app-details-projects',
   standalone: true,
-  imports: [UpdateProjectsComponent, CreateUserStoriesComponent, RouterLink],
+  imports: [
+    UpdateProjectsComponent,
+    CreateUserStoriesComponent,
+    RouterLink,
+    StatusMessageComponent,
+  ],
   templateUrl: './details-projects.component.html',
   styleUrls: ['./details-projects.component.css'],
 })
@@ -26,6 +23,8 @@ export class DetailsProjectsComponent implements OnInit {
   isCreateStoryModalOpen = false;
   projectId: string | null = null;
   project: Project | null = null;
+  statusMessage: string | null = null;
+  successMessage: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,9 +44,7 @@ export class DetailsProjectsComponent implements OnInit {
     // Subscribe to the `paramMap` observable of the `ActivatedRoute` instance.
     // The `paramMap` observable emits a `ParamMap` object containing the route parameters.
     this.route.paramMap.subscribe((params) => {
-      // Get the 'id' parameter from the `ParamMap` object.
       this.projectId = params.get('id');
-
       // Check if the 'id' parameter is present.
       if (this.projectId) {
         // Call the `getProjectById` method with the 'id' parameter.
@@ -184,5 +181,63 @@ export class DetailsProjectsComponent implements OnInit {
         this.router.navigate(['/projects']);
       },
     });
+  }
+
+  /**
+   * The `handleProjectUpdate` method is a public method of the `DetailsProjectsComponent` class.
+   * It is responsible for handling the update of a project.
+   *
+   * @param updateProject - The `updateProject` parameter is an object representing the updated project data.
+   *
+   * @returns none - This method does not return any value.
+   *
+   * @example
+   * ```typescript
+   * // Inside a component's method
+   * this.detailsProjectsComponent.handleProjectUpdate({ id: 1, name: 'New Project Name' });
+   * ```
+   *
+   * @description
+   * The `handleProjectUpdate` method first calls the `closeModal` method to hide the modal window.
+   * Then, it sets the `project` property of the `DetailsProjectsComponent` instance to the updated project data.
+   * After that, it sets the `statusMessage` property to a success message and the `successMessage` property to `true`.
+   * Finally, it uses the `setTimeout` method to clear the `statusMessage` property after 3 seconds.
+   */
+  handleProjectUpdate(updateProject: any): void {
+    this.closeModal();
+    this.project = updateProject;
+    this.statusMessage = 'Se actualizó exitosamente';
+    this.successMessage = true;
+    setTimeout(() => {
+      this.statusMessage = null;
+    }, 3000);
+  }
+
+  /**
+   * The `handleError` method is a public method of the `DetailsProjectsComponent` class.
+   * It is responsible for handling errors that occur during the update of a project.
+   *
+   * @param error - The `error` parameter is an object representing the error that occurred during the update process.
+   *
+   * @returns none - This method does not return any value.
+   *
+   * @example
+   * ```typescript
+   * // Inside a component's method
+   * this.detailsProjectsComponent.handleError(new Error('Network error'));
+   * ```
+   *
+   * @description
+   * The `handleError` method first calls the `closeModal` method to hide the modal window.
+   * Then, it sets the `statusMessage` property to an error message and the `successMessage` property to `false`.
+   * Finally, it uses the `setTimeout` method to clear the `statusMessage` property after 3 seconds.
+   */
+  handleError(error: any): void {
+    this.closeModal();
+    this.statusMessage = 'Error, intente más tarde';
+    this.successMessage = false;
+    setTimeout(() => {
+      this.statusMessage = null;
+    }, 3000);
   }
 }
