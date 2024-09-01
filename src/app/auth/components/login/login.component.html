@@ -1,9 +1,9 @@
 <div class="login-wrapper">
   <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form>
-      <div class="form-group general-error">
-        <div class="error-message">Datos inválidos</div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group" *ngIf="generalError">
+        <div class="error-message">{{ generalError }}</div>
       </div>
       <div class="form-group">
         <label for="email">Correo Electrónico</label>
@@ -14,9 +14,9 @@
           class="form-control"
           [(ngModel)]="credentials.email"
           name="email"
+          [ngClass]="{'error': emailError}"
         />
-        <div class="error-message">Correo electrónico requerido</div>
-        <div class="error-message">Correo electrónico inválido</div>
+        <div class="error-message" *ngIf="emailError">{{ emailError }}</div>
       </div>
 
       <div class="form-group">
@@ -28,14 +28,12 @@
           class="form-control"
           [(ngModel)]="credentials.password"
           name="password"
+          [ngClass]="{'error': passwordError}"
         />
-        <div class="error-message">Contraseña requerida</div>
-        <div class="error-message">
-          La contraseña debe tener al menos 6 caracteres
-        </div>
+        <div class="error-message" *ngIf="passwordError">{{ passwordError }}</div>
       </div>
 
-      <button (click)="login()" type="submit">Iniciar Sesión</button>
+      <button type="submit">Iniciar Sesión</button>
 
       <div class="links">
         <a href="#">¿Olvidaste tu contraseña?</a>
