@@ -50,7 +50,7 @@ export class AuthService {
    * If the token is found, it is returned; otherwise, null is returned.
    * @returns {string | null} - The token retrieved from the local storage, or null if the token is not found.
    */
-  private getToken(): string | null {
+   getToken(): string | null {
     if (typeof window !== 'undefined') {
       return localStorage.getItem(this.tokenKey);
     }
