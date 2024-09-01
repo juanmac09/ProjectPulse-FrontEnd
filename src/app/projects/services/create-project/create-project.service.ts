@@ -16,6 +16,6 @@ export class CreateProjectService {
    * @returns An Observable that emits the response from the server after the project is created.
    */
   createProject(projectData: any): Observable<any> {
-    return this.HttpService.postData(this.endPoint, projectData).pipe(tap());
+    return this.HttpService.postData(this.endPoint, projectData);
   }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -18,13 +18,13 @@ import { Router } from '@angular/router';
 })
 export class CreateProjectsComponent {
   projectForm: FormGroup;
-  successMessage: string | null = null;
-  errorMessage: string | null = null;
+  @Output() projectCreated = new EventEmitter<any>();
+  @Output() errorOccurred = new EventEmitter<any>();
+
 
   constructor(
     private fb: FormBuilder,
     private projectCreateService: CreateProjectService,
-    private router: Router
   ) {
     this.projectForm = this.fb.group({
       projectName: ['', [Validators.required, Validators.minLength(3)]],
@@ -57,16 +57,12 @@ export class CreateProjectsComponent {
 
     const projectData = this.formatData(this.projectForm.value);
     this.projectCreateService.createProject(projectData).subscribe({
-      next: () => {
-        this.successMessage = 'Proyecto creado exitosamente';
-        this.errorMessage = null;
+      next: (newProject) => {
         this.projectForm.reset();
-        setTimeout(() => (this.successMessage = null), 3000); // Ocultar mensaje después de 3 segundos
+        this.projectCreated.emit(newProject);
       },
-      error: () => {
-        this.successMessage = null;
-        this.errorMessage =
-          'Error al crear el proyecto. Por favor, intente más tarde.';
+      error: (error) => {
+        this.errorOccurred.emit(error);
       },
     });
   }

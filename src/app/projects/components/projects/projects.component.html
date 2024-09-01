@@ -4,6 +4,10 @@
     <button class="btn-add-project" (click)="openModal()">
       Agregar Proyecto
     </button>
+    <!-- Barra de búsqueda -->
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar proyectos..." >
+    </div>
   </header>
 
   <section class="projects-list">
@@ -18,11 +22,34 @@
     }
   </section>
 
+  <!-- Mensajes de éxito y error -->
+  @if (successMessage) {
+  <div class="message success-message">
+    <span class="message-icon"></span>
+    {{ successMessage }}
+  </div>
+  } @if (errorMessage) {
+  <div class="message error-message">
+    <span class="message-icon"></span>
+    {{ errorMessage }}
+  </div>
+  }
+
+  <!-- Botones de paginación -->
+  <div class="pagination">
+    <button class="btn-pagination" [disabled]="page === 1" (click)="backPage()">« Anterior</button>
+    <span> Página {{ page }} de {{ totalPage }} de {{ totalElements }} elementos </span>
+    <button class="btn-pagination" [disabled]="page === totalPage" (click)="nextPage()">Siguiente »</button>
+  </div>
+
   <!-- Modal -->
   <div class="modal" [class.show]="isModalOpen" (click)="closeModal($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <button class="modal-close" (click)="closeModal()">×</button>
-      <app-create-projects></app-create-projects>
+      <app-create-projects
+        (projectCreated)="handleProjectCreated($event)"
+        (errorOccurred)="handleError($event)"
+      ></app-create-projects>
     </div>
   </div>
 </div>

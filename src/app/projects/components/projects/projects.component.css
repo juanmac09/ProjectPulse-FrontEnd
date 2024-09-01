@@ -150,3 +150,94 @@
     margin-top: 20%;
   }
 }
+
+
+/* Estilo general para los mensajes */
+.message {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el mensaje de éxito */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Estilo para el mensaje de error */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Iconos para mensajes de éxito y error */
+.message-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Icono de éxito */
+.success-message .message-icon::before {
+  content: '✔'; /* Marca de verificación */
+  color: #155724;
+}
+
+/* Icono de error */
+.error-message .message-icon::before {
+  content: '✘'; /* Cruz */
+  color: #721c24;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  font-size: 16px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los botones de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-pagination {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 5px;
+}
+
+.btn-pagination:hover {
+  background-color: #0056b3;
+}
+
+.btn-pagination:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
