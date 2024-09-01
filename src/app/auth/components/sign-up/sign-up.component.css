@@ -104,7 +104,6 @@ button:disabled {
   font-size: 14px;
   margin-top: 5px;
   font-weight: 400;
-  display: none;
 }
 
 /* Estilo del enlace de inicio de sesión */
@@ -128,3 +127,13 @@ button:disabled {
 .login-link a:hover {
   color: #0056b3;
 }
+
+/* Estilo de los mensajes de éxito */
+.success-message {
+  color: #28a745; /* Verde */
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 400;
+  text-align: center;
+}
+
