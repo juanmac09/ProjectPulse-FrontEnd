@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { CreateProjectsComponent } from "../create-projects/create-projects.component";
+import { CreateProjectsComponent } from '../create-projects/create-projects.component';
 import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../services/project/project.service';
+import { FormsModule } from '@angular/forms';
+
 
 /**
  * Interface representing the structure of a project.
@@ -19,20 +21,22 @@ interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CreateProjectsComponent, RouterLink],
+  imports: [CreateProjectsComponent, RouterLink,FormsModule],
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent {
-  isModalOpen = false;  // Determines if the modal is open or closed
-  successMessage: string | null = null;  // Success message to display
-  errorMessage: string | null = null;  // Error message to display
-  projects: Project[] = [];  // List of projects
-  page: number = 1;  // Current page number
-  totalPage: number = 0;  // Total number of pages
-  totalElements: number = 0;  // Total number of elements
-  readonly pageSize: number = 10;  // Number of projects per page
-  readonly initialPage: number = 0;  // Initial page number
+  isModalOpen = false; // Determines if the modal is open or closed
+  successMessage: string | null = null; // Success message to display
+  errorMessage: string | null = null; // Error message to display
+  projects: Project[] = []; // List of projects
+  page: number = 1; // Current page number
+  totalPage: number = 0; // Total number of pages
+  totalElements: number = 0; // Total number of elements
+  readonly pageSize: number = 10; // Number of projects per page
+  readonly initialPage: number = 0; // Initial page number
+  searchTerm: string = ''; // Termino de búsqueda
+  filteredProjects: Project[] = []; // Proyectos filtrados
 
   constructor(private projectService: ProjectService) {}
 
@@ -49,10 +53,11 @@ export class ProjectsComponent {
    * @param size The number of projects per page.
    */
   getProjects(page: number, size: number): void {
-    this.projectService.getProjects(page, size).subscribe(response => {
+    this.projectService.getProjects(page, size).subscribe((response) => {
       this.projects = response.data.content;
       this.totalPage = response.data.totalPages;
       this.totalElements = response.data.totalElements;
+      this.filterProjects(); 
     });
   }
 
@@ -81,6 +86,7 @@ export class ProjectsComponent {
   handleProjectCreated(newProject: any): void {
     this.projects.push(newProject.data);
     this.totalElements++;
+    this.filterProjects();
     this.closeModal();
     this.successMessage = 'Proyecto creado exitosamente';
     this.errorMessage = null;
@@ -94,7 +100,8 @@ export class ProjectsComponent {
   handleError(error: any): void {
     this.closeModal();
     this.successMessage = null;
-    this.errorMessage = 'Error al crear el proyecto. Por favor intente más tarde';
+    this.errorMessage =
+      'Error al crear el proyecto. Por favor intente más tarde';
   }
 
   /**
@@ -114,6 +121,23 @@ export class ProjectsComponent {
     if (this.page > 1) {
       this.page--;
       this.getProjects(this.page - 1, this.pageSize);
+    }
+  }
+
+  /**
+   * Filters the list of projects based on the search term.
+   */
+  filterProjects(): void {
+    if (this.searchTerm) {
+      this.filteredProjects = this.projects.filter(
+        (project) =>
+          project.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          project.description
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredProjects = [...this.projects];
     }
   }
 }
