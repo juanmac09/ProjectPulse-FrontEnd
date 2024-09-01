@@ -82,7 +82,7 @@ export class ProjectsComponent {
     this.projects.push(newProject.data);
     this.totalElements++;
     this.closeModal();
-    this.successMessage = 'Project created successfully';
+    this.successMessage = 'Proyecto creado exitosamente';
     this.errorMessage = null;
     setTimeout(() => (this.successMessage = null), 3000);
   }
@@ -94,7 +94,7 @@ export class ProjectsComponent {
   handleError(error: any): void {
     this.closeModal();
     this.successMessage = null;
-    this.errorMessage = 'Error creating the project. Please try again later.';
+    this.errorMessage = 'Error al crear el proyecto. Por favor intente más tarde';
   }
 
   /**
