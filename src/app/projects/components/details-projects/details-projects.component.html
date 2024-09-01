@@ -1,10 +1,12 @@
 <div class="view-project-container">
   <h2>Detalles del Proyecto</h2>
   <div class="project-details">
-    <p><strong>Nombre del Proyecto:</strong> Proyecto X</p>
-    <p><strong>Descripción:</strong> Descripción detallada del Proyecto X.</p>
-    <p><strong>Fecha de Inicio:</strong> 12/10/2024</p>
-    <p><strong>Fecha de Fin:</strong> 12/10/2024</p>
+    @if (project) {
+      <p><strong>Nombre del Proyecto:</strong> {{ project.name}} </p>
+      <p><strong>Descripción:</strong> {{ project.description }}</p>
+      <p><strong>Compañia:</strong> {{ project.generalCompany.name }}.</p>
+    }
+    
   </div>
   <div class="action-buttons">
     <a routerLink="/userstory" class="btn-view-stories">Ver Historias de Usuario</a>

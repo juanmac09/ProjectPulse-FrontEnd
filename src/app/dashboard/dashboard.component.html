@@ -2,16 +2,16 @@
   <app-navbar></app-navbar>
   <div class="dashboard-content">
 
-    @if (currentRoute == 'projects') {
+    @if (currentRoute === 'projects') {
       <app-projects></app-projects>
     }
-    @else if (currentRoute == 'userstory') {
+    @else if (currentRoute === 'userstory') {
       <app-user-stories></app-user-stories>
     }
-    @else if (currentRoute == 'ticket') {
+    @else if (currentRoute === 'ticket') {
       <app-tikets></app-tikets>
     }
-    @else if (currentRoute == 'details-projects') {
+    @else if (currentRoute.startsWith('details-projects')) {
       <app-details-projects></app-details-projects>
     }
     

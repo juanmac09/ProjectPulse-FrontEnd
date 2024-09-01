@@ -20,7 +20,7 @@
       <div class="project-card">
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
-        <a routerLink="/details-projects" class="btn-view-details">Ver detalles</a>
+        <a [routerLink]="['/details-projects', project.id]" class="btn-view-details">Ver detalles</a>
       </div>
     }
   </section>
