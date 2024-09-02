@@ -1,52 +1,59 @@
 <div class="ticket-form-container">
-    <h2>Crear Nuevo Ticket</h2>
-    <form class="ticket-form">
-      <div class="form-group">
-        <label for="ticket-title">Título</label>
-        <input
-          type="text"
-          id="ticket-title"
-          name="title"
-          placeholder="Título del ticket"
-          required
-        />
-        <span class="error-message" id="ticket-title-error">El título es requerido.</span>
-      </div>
-      <div class="form-group">
-        <label for="ticket-description">Descripción</label>
-        <textarea
-          id="ticket-description"
-          name="description"
-          placeholder="Descripción del ticket"
-          rows="4"
-          required
-        ></textarea>
-        <span class="error-message" id="ticket-description-error">La descripción es requerida.</span>
-      </div>
-      <div class="form-group">
-        <label for="ticket-status">Estado</label>
-        <select id="ticket-status" name="status" required>
-          <option value="" disabled selected>Selecciona el estado del ticket</option>
-          <option value="active">Activo</option>
-          <option value="in-progress">En Proceso</option>
-          <option value="completed">Finalizado</option>
-        </select>
-        <span class="error-message" id="ticket-status-error">El estado es requerido.</span>
-      </div>
-      <div class="form-group">
-        <label for="ticket-user-story">Historia de Usuario Asociada</label>
-        <select id="ticket-user-story" name="user-story" required>
-          <option value="" disabled selected>Selecciona una historia de usuario</option>
-          <!-- Aquí puedes llenar con historias de usuario disponibles -->
-          <option value="user-story1">Historia de Usuario 1</option>
-          <option value="user-story2">Historia de Usuario 2</option>
-        </select>
-        <span class="error-message" id="ticket-user-story-error">Selecciona una historia de usuario.</span>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="submit-btn">Guardar Ticket</button>
-        <button type="button" class="cancel-btn">Cancelar</button>
-      </div>
-    </form>
-  </div>
-  
+  <h2>Crear Nuevo Ticket</h2>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="ticket-form">
+    <div class="form-group">
+      <label for="ticket-title">Título</label>
+      <input
+        id="ticket-title"
+        formControlName="title"
+        placeholder="Título del ticket"
+      />
+      <span *ngIf="title.invalid && (title.touched || title.dirty)" class="error-message">
+        <ng-container *ngIf="title.errors?.['required']">El título es requerido.</ng-container>
+        <ng-container *ngIf="title.errors?.['minlength']">El título debe tener al menos 4 caracteres.</ng-container>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="ticket-description">Descripción</label>
+      <textarea
+        id="ticket-description"
+        formControlName="description"
+        placeholder="Descripción del ticket"
+        rows="4"
+      ></textarea>
+      <span *ngIf="description.invalid && (description.touched || description.dirty)" class="error-message">
+        <ng-container *ngIf="description.errors?.['required']">La descripción es requerida.</ng-container>
+        <ng-container *ngIf="description.errors?.['minlength']">La descripción debe tener al menos 8 caracteres.</ng-container>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="ticket-status">Estado</label>
+      <select id="ticket-status" formControlName="status" required>
+        <option value="" disabled selected>Selecciona el estado del ticket</option>
+        <option value="0">Activo</option>
+        <option value="1">En Proceso</option>
+        <option value="2">Finalizado</option>
+      </select>
+      <span *ngIf="status.invalid && (status.touched || status.dirty)" class="error-message">
+        <ng-container *ngIf="status.errors?.['required']">El estado es requerido.</ng-container>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="ticket-comment">Comentario</label>
+      <textarea
+        id="ticket-comment"
+        formControlName="comment"
+        placeholder="Comentario del ticket"
+        rows="4"
+      ></textarea>
+      <span *ngIf="comment.invalid && (comment.touched || comment.dirty)" class="error-message">
+        <ng-container *ngIf="comment.errors?.['required']">El comentario es requerido.</ng-container>
+        <ng-container *ngIf="comment.errors?.['minlength']">El comentario debe tener al menos 8 caracteres.</ng-container>
+      </span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="submit-btn">Guardar Ticket</button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

@@ -55,11 +55,14 @@
 }
 
 /* Mensajes de error */
+/* Mensajes de error */
 .error-message {
   color: #dc3545;
   font-size: 14px;
-  display: none; /* Oculto por defecto, se mostrará solo cuando haya un error */
+  display: block; /* Asegúrate de que el mensaje de error sea visible */
+  margin-top: 5px;
 }
+
 
 /* Botones del formulario */
 .form-group .submit-btn {

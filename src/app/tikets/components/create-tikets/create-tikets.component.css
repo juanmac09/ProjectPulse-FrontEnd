@@ -58,7 +58,6 @@
   .error-message {
     color: #dc3545;
     font-size: 14px;
-    display: none; /* Oculto por defecto, se mostrará solo cuando haya un error */
   }
   
   /* Botones del formulario */

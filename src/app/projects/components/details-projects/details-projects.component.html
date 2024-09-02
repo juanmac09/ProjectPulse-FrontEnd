@@ -31,12 +31,14 @@
 
 
 <!-- Modal de Crear Nueva Historia de Usuario -->
-<div class="modal" [class.show]="isCreateStoryModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeCreateStoryModal()">&times;</span>
-    <app-create-user-stories></app-create-user-stories>
+@if(projectId){
+  <div class="modal" [class.show]="isCreateStoryModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeCreateStoryModal()">&times;</span>
+      <app-create-user-stories [projectId]="projectId" (userStoryCreated)="handleUserStoryCreate($event)" (errorOccurred)="handleError($event)" ></app-create-user-stories>
+    </div>
   </div>
-</div>
+}
 
 @if(statusMessage && successMessage){
   <app-status-message [message]="statusMessage" [isSuccess]="successMessage"></app-status-message>

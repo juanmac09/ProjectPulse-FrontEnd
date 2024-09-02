@@ -234,10 +234,42 @@ export class DetailsProjectsComponent implements OnInit {
    */
   handleError(error: any): void {
     this.closeModal();
+    this.closeCreateStoryModal();
     this.statusMessage = 'Error, intente más tarde';
     this.successMessage = false;
     setTimeout(() => {
       this.statusMessage = null;
     }, 3000);
   }
+
+  /**
+   * The `handleUserStoryCreate` method is a public method of the `DetailsProjectsComponent` class.
+   * It is responsible for handling the creation of a new user story.
+   *
+   * @param userStoryCreate - The `userStoryCreate` parameter is an object representing the new user story data.
+   *
+   * @returns none - This method does not return any value.
+   *
+   * @example
+   * ```typescript
+   * // Inside a component's method
+   * this.detailsProjectsComponent.handleUserStoryCreate({ id: 1, name: 'New User Story' });
+   * ```
+   *
+   * @description
+   * The `handleUserStoryCreate` method first calls the `closeModal` method to hide the modal window.
+   * Then, it calls the `closeCreateStoryModal` method to hide the modal window for creating a new user story.
+   * After that, it sets the `statusMessage` property to a success message and the `successMessage` property to `true`.
+   * Finally, it uses the `setTimeout` method to clear the `statusMessage` property after 3 seconds.
+   */
+  handleUserStoryCreate(userStoryCreate: any): void {
+    this.closeCreateStoryModal();
+    this.statusMessage = 'la historia de usuario se creo exitosamente';
+    this.successMessage = true;
+    setTimeout(() => {
+      this.statusMessage = null;
+    }, 3000);
+  }
+
+  
 }

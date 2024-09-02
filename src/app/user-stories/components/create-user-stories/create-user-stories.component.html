@@ -1,40 +1,33 @@
 <div class="user-story-form-container">
   <h2>Crear Nueva Historia de Usuario</h2>
-  <form class="user-story-form">
+  <form [formGroup]="userStoryForm" (ngSubmit)="onSubmit()" class="user-story-form">
     <div class="form-group">
       <label for="story-title">Título</label>
       <input
-        type="text"
         id="story-title"
-        name="title"
+        formControlName="title"
         placeholder="Título de la historia de usuario"
-        required
       />
-      <span class="error-message">Este campo es obligatorio.</span>
+      <span *ngIf="title.invalid && (title.touched || title.dirty)" class="error-message">
+        <ng-container *ngIf="title.errors?.['required']">Este campo es obligatorio.</ng-container>
+        <ng-container *ngIf="title.errors?.['minlength']">El título debe tener al menos 4 caracteres.</ng-container>
+      </span>
     </div>
     <div class="form-group">
       <label for="story-description">Descripción</label>
       <textarea
         id="story-description"
-        name="description"
+        formControlName="description"
         placeholder="Descripción de la historia de usuario"
         rows="4"
-        required
       ></textarea>
-      <span class="error-message">Este campo es obligatorio.</span>
+      <span *ngIf="description.invalid && (description.touched || description.dirty)" class="error-message">
+        <ng-container *ngIf="description.errors?.['required']">Este campo es obligatorio.</ng-container>
+        <ng-container *ngIf="description.errors?.['minlength']">La descripción debe tener al menos 8 caracteres.</ng-container>
+      </span>
     </div>
     <div class="form-group">
-      <label for="story-project">Proyecto Asociado</label>
-      <select id="story-project" name="project" required>
-        <option value="" disabled selected>Selecciona un proyecto</option>
-        <!-- Aquí puedes llenar con proyectos disponibles -->
-        <option value="project1">Proyecto 1</option>
-        <option value="project2">Proyecto 2</option>
-      </select>
-      <span class="error-message">Debes seleccionar un proyecto.</span>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="submit-btn">Guardar Historia</button>
+      <button type="submit" class="submit-btn" [disabled]="userStoryForm.invalid">Guardar Historia</button>
     </div>
   </form>
 </div>
