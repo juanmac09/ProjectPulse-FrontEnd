@@ -1,33 +1,73 @@
 <div class="user-stories-container">
-  <div class="user-stories-header">
-    <h2>Historias de Usuario</h2>
-    <button class="create-story-btn" (click)="openCreateStoryModal()">Nueva Historia de Usuario</button>
+  <header class="user-stories-header">
+    <h2>User Stories</h2>
+    <button class="btn-add-story" (click)="openModal()">
+      Agregar Historia de Usuario
+    </button>
+    <!-- Barra de búsqueda -->
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Buscar historias..."
+        [(ngModel)]="searchTerm"
+        (input)="filterUserStories()"
+      />
+    </div>
+  </header>
+
+  <section class="user-stories-list">
+    @for (story of filteredUserStories; track $index) {
+      <div class="story-card">
+        <h3>{{ story.title }}</h3>
+        <p>{{ story.description }}</p>
+        <a [routerLink]="['/details-user-stories', story.id]" class="btn-view-details">Ver tickets</a>
+        <button class="edit-story-btn" (click)="openUpdateModal(story)">Editar</button>
+      </div>
+    }
+  </section>
+
+
+  <!-- Botones de paginación -->
+  <div class="pagination">
+    <button class="btn-pagination" [disabled]="page === 1" (click)="backPage()">
+      « Anterior
+    </button>
+    <span>
+      Página {{ page }} de {{ totalPage }} de {{ totalElements }} elementos
+    </span>
+    <button
+      class="btn-pagination"
+      [disabled]="page === totalPage"
+      (click)="nextPage()"
+    >
+      Siguiente »
+    </button>
   </div>
-  <div class="user-stories-list">
-    <div class="user-story-card">
-      <h3>Título de la Historia</h3>
-      <p>Descripción breve de la historia de usuario...</p>
-      <div class="user-story-actions">
-        <a routerLink="/ticket" class="edit-story-btn">Ver Tickets</a>
-        <button class="edit-story-btn" (click)="openUpdateStoryModal()">Editar</button>
+
+  <!-- Modal -->
+  @if(projectId){
+    <div class="modal" [class.show]="isModalOpen" (click)="closeModal($event)">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="closeModal()">×</button>
+        <app-create-user-stories [projectId]="projectId"
+          (userStoryCreated)="handleUserStoryCreated($event)"
+          (errorOccurred)="handleError($event)"
+        ></app-create-user-stories>
       </div>
     </div>
-    <!-- Repetir esta estructura para cada historia de usuario -->
-  </div>
-</div>
+  }
 
-<!-- Modal para crear una nueva historia de usuario -->
-<div class="modal" [class.show]="isCreateStoryModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeCreateStoryModal()">&times;</span>
-    <app-create-user-stories></app-create-user-stories>
-  </div>
-</div>
 
-<!-- Modal para actualizar la historia de usuario -->
-<div class="modal" [class.show]="isUpdateStoryModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeUpdateStoryModal()">&times;</span>
-    <app-update-user-stories></app-update-user-stories>
+  <!-- Modal de Actualización de Historia de Usuario -->
+  <div class="modal" [class.show]="isUpdateModalOpen" (click)="closeUpdateModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeUpdateModal()">×</button>
+      <app-update-user-stories
+      ></app-update-user-stories>
+    </div>
   </div>
+
+  @if(statusMessage && successMessage){
+    <app-status-message [message]="statusMessage" [isSuccess]="successMessage"></app-status-message>
+  }
 </div>

@@ -1,95 +1,117 @@
 /* Contenedor principal de historias de usuario */
 .user-stories-container {
-    margin: 20px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Encabezado de historias de usuario */
-  .user-stories-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .user-stories-header h2 {
-    font-size: 24px;
-    color: #343a40;
-  }
-  
-  /* Botón para crear nueva historia de usuario */
-  .create-story-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .create-story-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Lista de historias de usuario */
-  .user-stories-list {
-    display: grid;
-    gap: 20px;
-  }
-  
-  /* Tarjeta de historia de usuario */
-  .user-story-card {
-    padding: 15px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-story-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #343a40;
-  }
-  
-  .user-story-card p {
-    font-size: 16px;
-    color: #6c757d;
-    margin-bottom: 15px;
-  }
-  
-  /* Acciones de la tarjeta */
-  .user-story-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .edit-story-btn, .delete-story-btn {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .edit-story-btn:hover {
-    background-color: #218838;
-  }
-  
-  .delete-story-btn {
-    background-color: #dc3545;
-  }
-  
-  .delete-story-btn:hover {
-    background-color: #c82333;
-  }
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px);
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado de historias de usuario */
+.user-stories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-stories-header h2 {
+  font-size: 24px;
+  color: #343a40;
+}
+
+/* Botón para crear nueva historia de usuario */
+.btn-add-story, .create-story-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-story:hover, .create-story-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Lista de historias de usuario */
+.user-stories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Tarjeta de historia de usuario */
+.story-card, .user-story-card {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.story-card h3, .user-story-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #343a40;
+}
+
+.story-card p, .user-story-card p {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+/* Acciones de la tarjeta */
+.user-story-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-story-btn, .delete-story-btn {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-story-btn:hover {
+  background-color: #218838;
+}
+
+.delete-story-btn {
+  background-color: #dc3545;
+}
+
+.delete-story-btn:hover {
+  background-color: #c82333;
+}
+
+/* Botón para ver detalles */
+.btn-view-details {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-view-details:hover {
+  background-color: #0056b3;
+}
+
 /* Estilo para el fondo del modal */
 .modal {
   display: none; /* Escondido por defecto */
@@ -151,5 +173,75 @@
   color: #000;
   text-decoration: none;
 }
-  
-  
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Botones de paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  background-color: #f8f9fa;
+  color: #007bff;
+  border: 1px solid #dee2e6;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination button:disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+  cursor: not-allowed;
+  border-color: #dee2e6;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+.edit-story-btn:hover {
+  background-color: #0056b3; /* Color de fondo en hover */
+}
+
+.edit-story-btn:focus {
+  outline: none;
+}
+
+.edit-story-btn:active {
+  transform: scale(0.98); /* Efecto de clic */
+}
