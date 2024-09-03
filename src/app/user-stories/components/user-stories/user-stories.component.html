@@ -59,13 +59,15 @@
 
 
   <!-- Modal de Actualización de Historia de Usuario -->
-  <div class="modal" [class.show]="isUpdateModalOpen" (click)="closeUpdateModal($event)">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <button class="modal-close" (click)="closeUpdateModal()">×</button>
-      <app-update-user-stories
-      ></app-update-user-stories>
+  @if(selectedUserStory){
+    <div class="modal" [class.show]="isUpdateModalOpen" (click)="closeUpdateModal($event)">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="closeUpdateModal()">×</button>
+        <app-update-user-stories (userStoryUpdateEvent)="handleUserStoryUpdated($event)" [userStoryUpdate]="selectedUserStory"
+        ></app-update-user-stories>
+      </div>
     </div>
-  </div>
+  }
 
   @if(statusMessage && successMessage){
     <app-status-message [message]="statusMessage" [isSuccess]="successMessage"></app-status-message>
