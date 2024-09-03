@@ -5,18 +5,27 @@
       <span class="icon">+</span>
       Crear Ticket
     </button>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Buscar historias..."
+        [(ngModel)]="searchTerm"
+        (input)="filterTickets()"
+      />
+    </div>
   </div>
   
   <div class="tickets-list">
-    @for (ticket of tickets; track $index) {
+    @for (ticket of filteredTickets; track $index) {
     <div>
       <div class="ticket-header">
         <h3 class="ticket-title">{{ ticket.title }}</h3>
         <span
           [ngClass]="{
-            'status-active': ticket.status === 'Activo',
-            'status-in-progress': ticket.status === 'En Proceso',
-            'status-completed': ticket.status === 'Finalizado'
+            'status-active': ticket.status === 'Active',
+            'status-in-progress': ticket.status === 'Progress',
+            'status-completed': ticket.status === 'Completed'
           }"
           class="ticket-status"
         >
@@ -37,6 +46,23 @@
   </div>
 </div>
 
+<div class="pagination">
+  <button class="btn-pagination" [disabled]="page === 1" (click)="backPage()">
+    « Anterior
+  </button>
+  <span>
+    Página {{ page }} de {{ totalPage }} de {{ totalElements }} elementos
+  </span>
+  <button
+    class="btn-pagination"
+    [disabled]="page === totalPage"
+    (click)="nextPage()"
+  >
+    Siguiente »
+  </button>
+</div>
+
+
 <!-- Modal para ver detalles del ticket -->
 <div class="modal" [class.show]="isTicketDetailsModalOpen">
   <div class="modal-content">
@@ -45,10 +71,6 @@
   </div>
 </div>
 
-<!-- Modal para crear un nuevo ticket -->
-<div class="modal" [class.show]="isCreateTicketModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeCreateTicketModal()">&times;</span>
-    <app-create-tikets></app-create-tikets>
-  </div>
-</div>
+@if(statusMessage && successMessage){
+  <app-status-message [message]="statusMessage" [isSuccess]="successMessage"></app-status-message>
+}

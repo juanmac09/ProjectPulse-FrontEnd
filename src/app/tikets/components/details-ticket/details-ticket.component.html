@@ -1,30 +1,26 @@
-<div class="ticket-details-container">
-  <div class="ticket-header">
-    <h2>Detalles del Ticket</h2>
-  </div>
-  <div class="ticket-content">
-    <div class="ticket-info">
-      <h3>Información del Ticket</h3>
-      <p><strong>ID:</strong> {{ ticket.id }}</p>
-      <p><strong>Título:</strong> {{ ticket.title }}</p>
-      <p><strong>Descripción:</strong> {{ ticket.description }}</p>
-      <p><strong>Estado:</strong> {{ ticket.status }}</p>
-      <p><strong>Fecha de Creación:</strong> {{ ticket.creationDate }}</p>
-      <p><strong>Prioridad:</strong> {{ ticket.priority }}</p>
+@if (ticket) {
+  <div class="ticket-details-container">
+    <div class="ticket-header">
+      <h2>Detalles del Ticket</h2>
     </div>
-    <div class="ticket-comments">
-      <h3>Comentarios</h3>
-      @for (comment of ticket.comments; track $index) {
-      <div class="comment">
-        <p>
-          <strong>{{ comment.author }}:</strong> {{ comment.text }}
-        </p>
-        <p class="comment-date">{{ comment.date }}</p>
+    <div class="ticket-content">
+      <div class="ticket-info">
+        <h3>Información del Ticket</h3>
+        <p><strong>ID:</strong> {{ ticket.id }}</p>
+        <p><strong>Título:</strong> {{ ticket.title }}</p>
+        <p><strong>Descripción:</strong> {{ ticket.description }}</p>
+        <p><strong>Estado:</strong> {{ ticket.status }}</p>
       </div>
-      }
-    </div>
-    <div class="ticket-actions">
-      <button class="action-btn" (click)="editTicket()">Editar</button>
+      <div class="ticket-comments">
+        <h3>Comentario</h3>
+
+        <div class="comment">
+          <p>
+             {{ticket.comment }}
+          </p>
+        </div>
+        
+      </div>
     </div>
   </div>
-</div>
+}
