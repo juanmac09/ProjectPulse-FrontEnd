@@ -8,7 +8,7 @@
     @else if (currentRoute.startsWith('userstory')) {
       <app-user-stories></app-user-stories>
     }
-    @else if (currentRoute === 'ticket') {
+    @else if (currentRoute.startsWith('ticket')) {
       <app-tikets></app-tikets>
     }
     @else if (currentRoute.startsWith('details-projects')) {

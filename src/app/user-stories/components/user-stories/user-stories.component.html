@@ -20,7 +20,7 @@
       <div class="story-card">
         <h3>{{ story.title }}</h3>
         <p>{{ story.description }}</p>
-        <a [routerLink]="['/details-user-stories', story.id]" class="btn-view-details">Ver tickets</a>
+        <a [routerLink]="['/ticket', story.id]" class="btn-view-details">Ver tickets</a>
         <button class="edit-story-btn" (click)="openUpdateModal(story)">Editar</button>
       </div>
     }
