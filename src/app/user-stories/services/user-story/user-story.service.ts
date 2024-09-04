@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserStoryService {
-  private endPoint: string = '/user-story/all';
+  private endPoint: string = '/user-story/projectId/';
   constructor(private httpService: RequestHttpService) {}
 
   /**
    * Retrieves a paginated list of user stories.
    *
+   * @param {number} id - The id project.
    * @param {number} page - The page number to retrieve.
    * @param {number} size - The number of user stories per page.
    * @returns {Observable<any>} - An observable that emits the paginated user stories.
@@ -20,9 +21,9 @@ export class UserStoryService {
    * It then returns an observable that emits the paginated user stories.
    * In the example usage, the function is subscribed to and the user stories are logged to the console.
    */
-  getUserStories(page: number, size: number): Observable<any> {
+  getUserStories(id:number,page: number, size: number): Observable<any> {
     return this.httpService.getData(
-      this.endPoint + '?page=' + page + '&size=' + size
+      this.endPoint + id + '?page=' + page + '&size=' + size
     );
   }
 }

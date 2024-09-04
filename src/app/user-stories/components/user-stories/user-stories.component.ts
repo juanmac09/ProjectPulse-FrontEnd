@@ -72,12 +72,14 @@ export class UserStoriesComponent {
     page: number = this.initialPage,
     size: number = this.pageSize
   ): void {
-    this.userStoryService.getUserStories(page, size).subscribe((response) => {
-      this.userStories = response.data.content;
-      this.totalPage = response.data.totalPages;
-      this.totalElements = response.data.totalElements;
-      this.filterUserStories();
-    });
+    if (this.projectId) {
+      this.userStoryService.getUserStories(parseInt(this.projectId),page, size).subscribe((response) => {
+        this.userStories = response.data.content;
+        this.totalPage = response.data.totalPages;
+        this.totalElements = response.data.totalElements;
+        this.filterUserStories();
+      });
+    }
   }
 
   /**
