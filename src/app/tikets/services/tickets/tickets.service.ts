@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TicketsService {
 
-  private endPoint: string = '/ticket/get/project/';
+  private endPoint: string = '/ticket/get/UserStory/';
 
   constructor(private httpService: RequestHttpService) {}
   /**
