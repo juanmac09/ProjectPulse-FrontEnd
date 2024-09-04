@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TicketsService {
 
-  private endPoint: string = '/ticket/get/all';
+  private endPoint: string = '/ticket/get/project/';
 
   constructor(private httpService: RequestHttpService) {}
   /**
@@ -33,7 +33,7 @@ export class TicketsService {
    */
   getTickets(userStoryId: number, page: number, size: number): Observable<any> {
     return this.httpService.getData(
-      this.endPoint + '?page=' + page + '&size=' + size
+      this.endPoint + userStoryId + '?page=' + page + '&size=' + size
     );
   }
 }
